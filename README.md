@@ -53,6 +53,10 @@
 
 2. 변수, 상수
 
+- 거의 모든 변수는 life cycle과 scope가 있음
+- js에서는 scope를 사용함
+  - scope = 접근 권한
+
 # Flow control
 
 - javascript engine에게 주는 hint
@@ -86,10 +90,74 @@ if (ex) {
 
 ### if else 문
 
-- 이지선다
+- 이지선다문
 - mandatory
 
 ```js
 if (true) 3;
 else 5;
 ```
+
+### label
+
+- label은 흐름제어의 기본
+
+- 같은 이름의 label을 사용하려면 function scope로 분기해야 함
+- label identifier;
+
+### break
+
+- break label;
+
+### continue
+
+- continue label;
+
+## function scope
+
+- 자유 변수와 자유 변수가 아닌 재변수 사이에 이름이 같으면 자기 변수를 더 우선시한다.
+
+```js
+let a = 3;
+const f = () => {
+	let a = 5;
+	log(a);
+};
+f();
+```
+
+## label scope
+
+- 함수 바깥에 있는 label로 점프할 수 없음
+
+```js
+k1: {
+	let a = 3;
+	const f = () => {
+		let a = 5;
+		k: {
+			break k1;
+			log(37);
+		}
+		log(a);
+	};
+	f();
+}
+```
+
+## switch
+
+- switch label block
+- 진리표 만들때까지 쓰지 말자 복잡해진다!
+
+```js
+switch (key) {
+	case value:
+		break;
+
+	default:
+		break;
+}
+```
+
+##
